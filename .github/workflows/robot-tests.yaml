@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Robot tests
         run: |
-          robot --outputdir results tests/
+          robot login.robot --outputdir results tests/
 
       - name: Upload Robot results
         if: always()
