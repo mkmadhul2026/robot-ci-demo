@@ -18,7 +18,9 @@ Valid Login
     Page Should Contain    Products
 
 Invalid Login
+    Wait Until Page Contains Element    id=user-name   10s
     Input Text    id=user-name    invalid_user
+    Wait Until Page Contains Element    id=password    10s
     Input Text    id=password     invalid_password
     Click Button  id=login-button
     Wait Until Page Contains Element    css=.error-message-container
