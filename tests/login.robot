@@ -11,13 +11,17 @@ ${PASSWORD}  secret_sauce
 
 *** Test Cases ***
 Valid Login
+    Open Login Page
+    Wait Until Page Contains Element    id=user-name   10s
     Input Text    id=user-name    ${USERNAME}
+    Wait Until Page Contains Element    id=password    10s
     Input Text    id=password     ${PASSWORD}
     Click Button  id=login-button
     Wait Until Page Contains    Products
     Page Should Contain    Products
 
 Invalid Login
+    Open Login Page
     Wait Until Page Contains Element    id=user-name   10s
     Input Text    id=user-name    invalid_user
     Wait Until Page Contains Element    id=password    10s
