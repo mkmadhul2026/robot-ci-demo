@@ -17,6 +17,13 @@ Valid Login
     Wait Until Page Contains    Products
     Page Should Contain    Products
 
+Invalid Login
+    Input Text    id=user-name    invalid_user
+    Input Text    id=password     invalid_password
+    Click Button  id=login-button
+    Wait Until Page Contains Element    css=.error-message-container
+    Element Should Contain    css=.error-message-container    Epic sadface: Username and password do not match any user in this service
+
 *** Keywords ***
 Open Login Page
     Open Browser    ${URL}    ${BROWSER}
