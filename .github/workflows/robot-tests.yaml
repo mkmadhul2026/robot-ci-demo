@@ -35,12 +35,6 @@ jobs:
           name: robot-results
           path: results/
 
-      - name: Upload Robot logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: robot-logs
-
       - name: Connect to AWS
         uses: aws-actions/configure-aws-credentials@v2
         with:
