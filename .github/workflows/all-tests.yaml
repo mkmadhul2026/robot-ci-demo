@@ -1,4 +1,4 @@
-name: Robot Framework Tests
+name: All Tests
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  robot-tests:
+  all-tests:
 
     runs-on: [self-hosted]
 
@@ -24,9 +24,13 @@ jobs:
         run: |
           python -m pip install -r requirements.txt
 
+      - name: Run Pytest tests
+        run: |
+          pytest --junitxml=results/pytest-results.xml
+      
       - name: Run Robot tests
         run: |
-          python -m robot --outputdir results tests/
+          python -m robot --outputdir results robot-tests/
 
       - name: Upload Robot results
         if: always()
