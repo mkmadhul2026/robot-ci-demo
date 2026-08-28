@@ -27,3 +27,7 @@ def test_add_negative_numbers():
     calc = Calculator()
     assert calc.add(-2, -3) == -5
 
+def test_add_fractional_numbers():
+    calc = Calculator()
+    assert calc.add(2.5, 3.1) == 5.6
+

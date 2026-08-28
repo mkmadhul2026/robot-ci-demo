@@ -15,3 +15,6 @@ class calculator:
 
     def add_negative_numbers(self, a, b):
         return a + b
+    
+    def add_fractional_numbers(self, a, b):
+        return a + b
