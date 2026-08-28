@@ -3,3 +3,4 @@ robotframework-seleniumlibrary
 selenium
 awscli
 pytest
+requests
