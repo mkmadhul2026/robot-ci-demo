@@ -12,3 +12,6 @@ class calculator:
         if b == 0:
             raise ValueError("Cannot divide by zero")
         return a / b
+
+    def add_negative_numbers(self, a, b):
+        return a + b

@@ -23,3 +23,7 @@ def test_divide_by_zero():
     except ValueError as e:
         assert str(e) == "Cannot divide by zero"
 
+def test_add_negative_numbers():
+    calc = Calculator()
+    assert calc.add(-2, -3) == -5
+
