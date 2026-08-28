@@ -1,6 +1,9 @@
-class githubapi:
+import os
+import requests
+
+class GithubApi:
     def __init__(self, token):
-        self.token = token
+        self.token = os.environ['GITHUB_TOKEN']
         self.base_url = "https://api.github.com"
 
     def get_user_info(self, username):
