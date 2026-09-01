@@ -1,3 +1,12 @@
+name: All Tests
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
 jobs:
     github-pr-workflow:
     
