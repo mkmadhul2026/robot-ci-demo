@@ -1,5 +1,7 @@
 from githubapi import GithubApi
 
+print("Starting PR info check...")
+
 class GetPRInfo:
     def __init__(self, token):
         self.github_api = GithubApi(token)
