@@ -21,6 +21,8 @@ jobs:
           working-directory: ${{ github.workspace }}
           env:
             PYTHONPATH: ${{ github.workspace }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          shell: pwsh
           run: |
             echo "current working directory: $(pwd)"
             python -c "import sys; print('Python executable:', sys.executable); print('Python path:'); print(*sys.path, sep='\n')"
