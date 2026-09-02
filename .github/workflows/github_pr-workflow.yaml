@@ -22,7 +22,6 @@ jobs:
           env:
             PYTHONPATH: ${{ github.workspace }}
           run: |
-            echo "Python executable: $(which python)"
             echo "current working directory: $(pwd)"
             python -c "import sys; print('Python executable:', sys.executable); print('Python path:'); print(*sys.path, sep='\n')"
             python scripts/check_pr_info.py    
