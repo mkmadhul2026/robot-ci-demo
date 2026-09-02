@@ -19,6 +19,7 @@ jobs:
 
         - name: Check PR info
           run: |
+            export PYTHONPATH=$GITHUB_WORKSPACE
             python scripts/check_pr_info.py    
 
             
