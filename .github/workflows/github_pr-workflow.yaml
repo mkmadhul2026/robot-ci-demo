@@ -24,6 +24,7 @@ jobs:
           run: |
             echo "current working directory: $(pwd)"
             python -c "import sys; print('Python executable:', sys.executable); print('Python path:'); print(*sys.path, sep='\n')"
-            python -u -m scripts.check_pr_info    
-
+            $result = python -u -m scripts.check_pr_info    
+            Write-Host "Result: $result"
+            echo "PR info check completed."
             
