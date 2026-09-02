@@ -1,8 +1,8 @@
-from GithubApi import GithubApi as GithubApiClass
+from githubapi import GithubApi
 
 class GetPRInfo:
     def __init__(self, token):
-        self.github_api = GithubApiClass(token)
+        self.github_api = GithubApi(token)
 
     def get_pull_request_info(self, owner, repo):
         pull_requests = self.github_api.get_repo_pull_requests(owner, repo)
