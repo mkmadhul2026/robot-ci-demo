@@ -5,9 +5,11 @@ print("Starting PR info check...")
 class GetPRInfo:
     def __init__(self, token):
         self.github_api = GithubApi(token)
+        print
 
     def get_pull_request_info(self, owner, repo):
         pull_requests = self.github_api.get_repo_pull_requests(owner, repo)
+        print(f"Retrieved {len(pull_requests)} pull requests for {owner}/{repo}.", flush=True)
         pr_info_list = []
         for pr in pull_requests:
             pr_info = {
