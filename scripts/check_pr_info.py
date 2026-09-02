@@ -19,4 +19,5 @@ class GetPRInfo:
                 "closed_at": pr.get("closed_at"),
             }
             pr_info_list.append(pr_info)
+        print(f"Pull request info for {owner}/{repo}: {pr_info_list}")
         return pr_info_list
