@@ -178,5 +178,5 @@ class GithubApi:
     def get_pull_request_commits(self, owner, repo, pull_number):
         url = f"{self.base_url}/repos/{owner}/{repo}/pulls/{pull_number}/commits"
         headers = {"Authorization": f"token {self.token}"}
-        response = requests.get(url, headers=headers
+        response = requests.get(url, headers=headers)
     
