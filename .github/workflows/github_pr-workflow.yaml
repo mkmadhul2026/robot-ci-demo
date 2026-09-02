@@ -19,6 +19,6 @@ jobs:
 
         - name: Check PR info
           run: |
-            python robot-ci-demo/scripts/check_pr_info.py    
+            python scripts/check_pr_info.py    
 
             
