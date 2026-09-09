@@ -1,0 +1,27 @@
+from githubapi import GithubApi
+
+print("Starting PR info check...")
+
+class GetPRInfo:
+    def __init__(self, token):
+        self.github_api = GithubApi(token)
+        print("Initialized GetPRInfo with provided token.", flush=True)
+
+    def get_pull_request_info(self, owner, repo):
+        pull_requests = self.github_api.get_repo_pull_requests(owner, repo)
+        print(f"Retrieved {len(pull_requests)} pull requests for {owner}/{repo}.", flush=True)
+        pr_info_list = []
+        for pr in pull_requests:
+            pr_info = {
+                "number": pr["number"],
+                "title": pr["title"],
+                "user": pr["user"]["login"],
+                "state": pr["state"],
+                "created_at": pr["created_at"],
+                "updated_at": pr["updated_at"],
+                "merged_at": pr.get("merged_at"),
+                "closed_at": pr.get("closed_at"),
+            }
+            pr_info_list.append(pr_info)
+        print(f"Pull request info for {owner}/{repo}: {pr_info_list}", flush=True)
+        return pr_info_list
