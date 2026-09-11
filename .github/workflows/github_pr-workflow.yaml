@@ -36,10 +36,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check PR info
-        shell: bash
+        shell: pwsh
         run: |
-          if [[ "${{ inputs.project_code }}" == "PC_robot-ci-demo" ]]; then
-            echo "tag=${{ inputs.tag }} project_code=${{ inputs.project_code }}"
-          elif [[ "${{ inputs.project_code }}" == "PC_robotfw-learning" ]]; then
-            echo "tag=${{ inputs.tag }} project_code=${{ inputs.project_code }}"
-          fi
+          Write-Host "project_code='${{ inputs.project_code }}'"
+          Write-Host "tag='${{ inputs.tag }}'"
+
+          if ("${{ inputs.project_code }}" -eq "PC_robot-ci-demo") {
+              Write-Host "Robot CI Demo selected"
+          }
+          elseif ("${{ inputs.project_code }}" -eq "PC_robotfw-learning") {
+              Write-Host "Robot FW Learning selected"
+          }
