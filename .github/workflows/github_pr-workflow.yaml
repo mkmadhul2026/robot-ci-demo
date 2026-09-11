@@ -30,8 +30,8 @@ jobs:
           Write-Host "tag='${{ github.event.inputs.tag }}'"
 
       - name: Check project
-        shell: wsl-bash {0}
         run: |
+          wsl bash -c '
           if ("${{ github.event.inputs.project_code }}" -eq "PC_robot-ci-demo") {
               Write-Host "Robot CI Demo selected"
               required_file = "robot_ci_demo.xlsx"
@@ -40,7 +40,8 @@ jobs:
               Write-Host "Robot FW Learning selected"
               required_file = "robotfw_learning.xlsx"
           }
+          '
       
           -name: Check tag
           run: |
-            echo "required_file=${required_file}"
+            wsl bash -c 'echo "required_file=${required_file}"'
