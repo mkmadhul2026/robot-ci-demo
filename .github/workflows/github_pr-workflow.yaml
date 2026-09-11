@@ -35,15 +35,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check PR info
-        shell: pwsh
+      - name: Detect shell
         run: |
-          Write-Host "project_code='${{ inputs.project_code }}'"
-          Write-Host "tag='${{ inputs.tag }}'"
-
-          if ("${{ inputs.project_code }}" -eq "PC_robot-ci-demo") {
-              Write-Host "Robot CI Demo selected"
-          }
-          elseif ("${{ inputs.project_code }}" -eq "PC_robotfw-learning") {
-              Write-Host "Robot FW Learning selected"
-          }
+          echo "OS=$RUNNER_OS"
+          which bash || true
+          which sh || true
+          which pwsh || true
+          which powershell || true
