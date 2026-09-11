@@ -35,10 +35,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Detect shell
+      - name: Check inputs
         run: |
-          echo "OS=$RUNNER_OS"
-          which bash || true
-          which sh || true
-          which pwsh || true
-          which powershell || true
+          Write-Host "project_code='${{ github.event.inputs.project_code }}'"
+          Write-Host "tag='${{ github.event.inputs.tag }}'"
+
+          if ("${{ github.event.inputs.project_code }}" -eq "PC_robot-ci-demo") {
+              Write-Host "Robot CI Demo selected"
+          }
+          elseif ("${{ github.event.inputs.project_code }}" -eq "PC_robotfw-learning") {
+              Write-Host "Robot FW Learning selected"
+          }
