@@ -1,51 +1,44 @@
-name: PR check Info
-
 on:
   push:
     branches:
       - main
 
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to check'
+        required: true
+        type: choice
+        default: 'TC_robot-ci-demo'
+        options:
+          - 'TC_robot-ci-demo'
+          - 'TC_robotfw-learning'
+
+      project_code:
+        description: 'Project code to check'
+        required: true
+        type: choice
+        default: 'PC_robot-ci-demo'
+        options:
+          - 'PC_robot-ci-demo'
+          - 'PC_robotfw-learning'
 
 jobs:
   pr-check-info:
-
-    runs-on: [self-hosted]
-    worklow_dispatch:
-      inputs:
-        tag:
-          description: 'Tag to check'
-          required: true
-          type: choice
-          default: 'TC robot-ci-demo'
-          options:
-            - 'TC_robot-ci-demo'
-            - 'TC_robotfw-learning'
-        project_code:
-          description: 'Project code to check'
-          required: true
-          type: choice
-          default: 'robot-ci-demo'
-          options:
-            - 'PC_robot-ci-demo'
-            - 'PC_robotfw-learning'
+    runs-on: self-hosted
 
     permissions:
       contents: read
       pull-requests: write
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-        - name: Checkout repository
-          uses: actions/checkout@v4
-
-        - name: Check PR info
-          working-directory: ${{ github.workspace }}
-          env:
-            PYTHONPATH: ${{ github.workspace }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: |
-            if project_code == 'PC_robot-ci-demo':
-                print("tag ${{ inputs.tag }} and project_code ${{ inputs.project_code }}")
-            elif project_code == 'PC_robotfw-learning':
-                print("tag ${{ inputs.tag }} and project_code ${{ inputs.project_code }}")
+      - name: Check PR info
+        run: |
+          if [[ "${{ inputs.project_code }}" == "PC_robot-ci-demo" ]]; then
+            echo "tag=${{ inputs.tag }} project_code=${{ inputs.project_code }}"
+          elif [[ "${{ inputs.project_code }}" == "PC_robotfw-learning" ]]; then
+            echo "tag=${{ inputs.tag }} project_code=${{ inputs.project_code }}"
+          fi
