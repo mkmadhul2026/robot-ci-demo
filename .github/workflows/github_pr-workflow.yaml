@@ -11,24 +11,24 @@ jobs:
   pr-check-info:
 
     runs-on: [self-hosted]
-
-    inputs:
-      tag:
-        description: 'Tag to check'
-        required: true
-        type: choice
-        default: 'TC robot-ci-demo'
-        options:
-          - 'TC_robot-ci-demo'
-          - 'TC_robotfw-learning'
-      project_code:
-        description: 'Project code to check'
-        required: true
-        type: choice
-        default: 'robot-ci-demo'
-        options:
-          - 'PC_robot-ci-demo'
-          - 'PC_robotfw-learning'
+    worklow_dispatch:
+      inputs:
+        tag:
+          description: 'Tag to check'
+          required: true
+          type: choice
+          default: 'TC robot-ci-demo'
+          options:
+            - 'TC_robot-ci-demo'
+            - 'TC_robotfw-learning'
+        project_code:
+          description: 'Project code to check'
+          required: true
+          type: choice
+          default: 'robot-ci-demo'
+          options:
+            - 'PC_robot-ci-demo'
+            - 'PC_robotfw-learning'
 
     permissions:
       contents: read
