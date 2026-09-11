@@ -45,7 +45,7 @@ jobs:
             PYTHONPATH: ${{ github.workspace }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
-            if ${{ project_code }} == 'PC_robot-ci-demo'; then
-              print("Checking PR info for robot-ci-demo")
-            elif ${{ project_code }} == 'PC_robotfw-learning'; then
-              print("Checking PR info for robotfw-learning")
+            if project_code == 'PC_robot-ci-demo':
+                print("tag ${{ inputs.tag }} and project_code ${{ inputs.project_code }}")
+            elif project_code == 'PC_robotfw-learning':
+                print("tag ${{ inputs.tag }} and project_code ${{ inputs.project_code }}")
