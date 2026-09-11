@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - feature/br1
 
   workflow_dispatch:
     inputs:
