@@ -30,6 +30,7 @@ jobs:
           Write-Host "tag='${{ github.event.inputs.tag }}'"
 
       - name: Check project
+        shell: wsl-bash {0}
         run: |
           if ("${{ github.event.inputs.project_code }}" -eq "PC_robot-ci-demo") {
               Write-Host "Robot CI Demo selected"
