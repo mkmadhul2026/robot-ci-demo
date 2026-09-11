@@ -33,7 +33,13 @@ jobs:
         run: |
           if ("${{ github.event.inputs.project_code }}" -eq "PC_robot-ci-demo") {
               Write-Host "Robot CI Demo selected"
+              required_file = "robot_ci_demo.xlsx"
           }
           elseif ("${{ github.event.inputs.project_code }}" -eq "PC_robotfw-learning") {
               Write-Host "Robot FW Learning selected"
+              required_file = "robotfw_learning.xlsx"
           }
+      
+          -name: Check tag
+          run: |
+            echo "required_file=${required_file}"
