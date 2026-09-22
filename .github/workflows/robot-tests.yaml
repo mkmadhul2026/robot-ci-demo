@@ -3,7 +3,7 @@ name: Robot Framework Tests screenshot Robot CI Demo
 on:
   push:
     branches:
-      - main
+      - screenshot-branch
 
   workflow_dispatch:
     inputs:
