@@ -1,4 +1,4 @@
-name: Robot Framework Tests
+name: Robot Framework Tests screenshot Robot CI Demo
 
 on:
   push:
@@ -6,6 +6,15 @@ on:
       - main
 
   workflow_dispatch:
+    inputs:
+      screenshot-path:
+        description: 'Screenshot required for Robot Framework tests'
+        required: false
+        type: choice
+        options:
+          - true
+          - false
+        default: false
 
 jobs:
   robot-tests:
