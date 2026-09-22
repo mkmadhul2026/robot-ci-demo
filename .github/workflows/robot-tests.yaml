@@ -14,7 +14,7 @@ on:
         options:
           - true
           - false
-        default: false
+        default: true
 
 jobs:
   robot-tests:
@@ -43,3 +43,11 @@ jobs:
         with:
           name: robot-results
           path: results/
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-screenshots
+          path: results/**/*.png
+          if-no-files-found: ignore
