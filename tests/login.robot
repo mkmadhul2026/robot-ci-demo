@@ -1,7 +1,8 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    OperatingSystem
 Suite Setup       Open Login Page
-Suite Teardown    Close All Browsers
+Suite Teardown    Take Screenshot And Close Browsers
 
 *** Variables ***
 ${URL}       https://www.saucedemo.com/
@@ -34,3 +35,8 @@ Invalid Login
 Open Login Page
     Open Browser    ${URL}    ${BROWSER}
     Maximize Browser Window
+
+Take Screenshot And Close Browsers
+    ${screenshot}=    Get Environment Variable    SCREENSHOT    login.png
+    Capture Page Screenshot    ${screenshot}
+    Close All Browsers

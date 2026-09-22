@@ -7,7 +7,7 @@ on:
 
   workflow_dispatch:
     inputs:
-      screenshot-path:
+      screenshot:
         description: 'Screenshot required for Robot Framework tests'
         required: false
         type: choice
@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Robot tests
         run: |
-          python -m robot --outputdir results tests/
+          python -m robot --outputdir results --variable SCREENSHOT:${{ inputs.screenshot || 'false' }} tests/
 
       - name: Upload Robot results
         if: always()
